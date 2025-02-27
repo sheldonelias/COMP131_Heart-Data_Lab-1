@@ -7,18 +7,22 @@ data_file_lines = []
 
 # USER-DEFINED FUNCTIONS
 def import_data():
+    # Need declare as global to share across all functions that
+    # need to access data_file_lines
     global data_file_lines
 
+    # Get file name from user
     my_file_path_name = input('Enter file path and name:')
 
+    # Create IO Wrapper object
     data_file = open(str(my_file_path_name))
-
+    # Check its structure
     print(data_file)
-
+    # Convert IO Wrapper object to list of strings
     data_file_lines = data_file.readlines()
-
+    # Check its structure
     print(data_file_lines)
-
+    # Close the IO stream
     data_file.close()
 
     # Does not work due to hetero datatype mix
@@ -32,15 +36,9 @@ def gather_sex():
 
     sex_col = []
 
-    for row in data_file_lines:
-
-        # print(row.split(',')[2])
-
-        sex_col.append(row.split(',')[2])
+    # Write the loop to get sex data column into sex_col list
 
     return sex_col
-
-
 
 
 # Store age column into a list
@@ -49,13 +47,10 @@ def gather_age():
 
     age_col = []
 
-    for row in data_file_lines:
-
-        #print(row.split(',')[1])
-
-        age_col.append(row.split(',')[1])
+    # Write the loop to get age data column into sex_col list
 
     return age_col
+
 
 # Store cholesterol in a list
 def gather_cholesterol():
@@ -63,11 +58,7 @@ def gather_cholesterol():
 
     cholesterol_col = []
 
-    for row in data_file_lines:
-
-        #print(row.split(',')[5])
-
-        cholesterol_col.append(row.split(',')[5])
+    # Write the loop to get cholesterol data column into sex_col list
 
     return cholesterol_col
 
@@ -83,17 +74,19 @@ def gather_num_data():
 
     num_data_np_array = np.array([ gather_sex(), gather_age() , gather_cholesterol() ])
 
-    print(num_data_np_array)
+    # Check values and structure
+    # print(num_data_np_array)
 
-
-    pass
+    return num_data_np_array
 
 def calc_avg(iterable):
 
-    count = len(iterable)
+    iterable_count = len(iterable)
 
+    iterable_sum = sum(iterable)
 
-    pass
+    return iterable_sum/iterable_count
+
 
 def main():
 
@@ -105,9 +98,12 @@ def main():
 
     # print(gather_cholesterol())
 
-    #calc_avg(gather_age())
-
     gather_num_data()
+
+    # Use calc_avg(). Replace dummy list with function that returns column data, eg. gather_age()
+    res = calc_avg([1,2,3,4,5,6])
+
+    print(res)
 
     pass
 
