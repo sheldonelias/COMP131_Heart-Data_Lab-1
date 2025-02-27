@@ -34,7 +34,9 @@ def import_data():
 def gather_sex():
     global data_file_lines
 
-    sex_col = []
+    #sex_col = []
+    # Stub assignment. Replace with above after loop is written.
+    sex_col = [1, 2, 3, 4, 5]
 
     # Write the loop to get sex data column into sex_col list
 
@@ -45,7 +47,9 @@ def gather_sex():
 def gather_age():
     global data_file_lines
 
-    age_col = []
+    #age_col = []
+    # Stub assignment. Replace with above after loop is written.
+    age_col = [1, 2, 3, 4, 5]
 
     # Write the loop to get age data column into sex_col list
 
@@ -56,7 +60,9 @@ def gather_age():
 def gather_cholesterol():
     global data_file_lines
 
-    cholesterol_col = []
+    #cholesterol_col = []
+    # Stub assignment. Replace with above after loop is written.
+    cholesterol_col = [1,2,3,4,5]
 
     # Write the loop to get cholesterol data column into sex_col list
 
@@ -72,6 +78,7 @@ def gather_num_data():
     my_array = np.array([my_list1,my_list2])
     '''
 
+    # Each function call returns a list that becomes a member row of the numpy array
     num_data_np_array = np.array([ gather_sex(), gather_age() , gather_cholesterol() ])
 
     # Check values and structure
@@ -101,7 +108,7 @@ def main():
     gather_num_data()
 
     # Use calc_avg(). Replace dummy list with function that returns column data, eg. gather_age()
-    res = calc_avg([1,2,3,4,5,6])
+    res = calc_avg(gather_num_data()[2])
 
     print(res)
 
